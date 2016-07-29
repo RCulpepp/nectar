@@ -1,2 +1,4 @@
 server/config/sensitive.js
 server/config/mongoose.js
+/bower_components
+/node_modules

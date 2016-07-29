@@ -15,7 +15,7 @@ var SubscriptionSchema = new mongoose.Schema({
 	last_delivery: {type: Date, default: null},
 	next_delievery: Date,
 	_orders = [{type: mongoose.Schema.Types.ObjectId, ref: 'Order'}],
-	_stripe_subs_id: String
+	_stripe_id: String
 }, {timestamps: true});
 
 
