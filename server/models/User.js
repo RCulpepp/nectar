@@ -45,8 +45,8 @@ var UserSchema = new mongoose.Schema({
 	state: String,
 	zip: Number,
 	stripe_id: String,
-	plan: String,
-	user_type: String
+	user_type: String,
+	_subscription: {type: mongoose.Schema.Types.ObjectId, ref: 'Subscription'}
 }, {timestamps: true});
 
 UserSchema.methods.hashPassword = function(pass){

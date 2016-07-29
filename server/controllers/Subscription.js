@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var OrderSchema = new mongoose.Schema({
+	_user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 	_subscription: {type: mongoose.Schema.Types.ObjectId, ref: "Subscription"},
 	delivery_date: Date,
 	delivery_address: String,
@@ -14,6 +15,7 @@ var SubscriptionSchema = new mongoose.Schema({
 	type: {type: String, required: true},
 	last_delivery: {type: Date, default: null},
 	next_delievery: Date,
+	day: String,
 	_orders = [{type: mongoose.Schema.Types.ObjectId, ref: 'Order'}],
 	_stripe_id: String
 }, {timestamps: true});
