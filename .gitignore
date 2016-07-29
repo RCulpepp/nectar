@@ -1,2 +1,2 @@
 server/config/sensitive.js
-server/config/database.js
+server/config/mongoose.js
