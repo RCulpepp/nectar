@@ -39,12 +39,13 @@ var UserSchema = new mongoose.Schema({
 		validate: validators
 	},
 	pw_salt: String,
+	card: String,
 	street1: String,
 	street2: String,
 	city: String,
 	state: String,
 	zip: Number,
-	stripe_id: String,
+	_stripe_id: String,
 	user_type: String,
 	_subscription: {type: mongoose.Schema.Types.ObjectId, ref: 'Subscription'}
 }, {timestamps: true});

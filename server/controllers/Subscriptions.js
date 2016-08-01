@@ -2,12 +2,19 @@ var mongoose = require('mongoose');
 var Subscription = mongoose.model('Subscription');
 var Order = mongoose.model('Order');
 var crypto = require('crypto');
-var sensData = require("../config/sesitive.js")
+var sensData = require("../config/sensitive.js")
 var stripe = require("stripe")(sensData.stripeTestKey);
 
 
 function Subscriptions(){
 	this.create = function(req,res){
+		//find user and update with CC token
+		User.update({_id: req.body._id},{$set: {card: req.body.token}}, function(err){
+			if(err){
+				res.send({token: {message: "Unable to update customer token."}})
+			}
+		})
+		//create user in stripe
 		stripe.customers.create({
 			card: req.body.token,
 			plan: req.body.plan,

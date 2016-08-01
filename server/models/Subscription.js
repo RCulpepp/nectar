@@ -5,8 +5,8 @@ var OrderSchema = new mongoose.Schema({
 	delivery_address: String,
 	products: [String],
 	payment_received: Boolean,
-	completed: {type: Boolean, default: false}
-	stripe_invoice_id: String
+	completed: {type: Boolean, default: false},
+	_stripe_invoice_id: String
 }, {timestamps: true});
 
 var SubscriptionSchema = new mongoose.Schema({
@@ -14,8 +14,8 @@ var SubscriptionSchema = new mongoose.Schema({
 	type: {type: String, required: true},
 	last_delivery: {type: Date, default: null},
 	next_delievery: Date,
-	orders = [OrderSchema],
-	stripe_subs_id: String
+	orders: [{type: mongoose.Schema.Types.ObjectId, ref: 'Order'}],
+	_stripe_subs_id: String
 }, {timestamps: true});
 
 
