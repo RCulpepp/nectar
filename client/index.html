@@ -1,38 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='myApp'>
 <head>
 	<title>Nectar</title>
 	<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/font-awesome.css">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"> -->
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 	<script src="js/main.js"></script>
+	<script type="text/javascript" src="angular/angular.js"></script>
+	<script src="angular-route/angular-route.js"></script>
+	<script src='assets/app.js'></script>
+	<script src='assets/factories/userFactory.js'></script>
+	<script src='assets/controllers/usersController.js'></script>
+	<script src='assets/controllers/indexController.js'></script>
 </head>
 <body>
-	<div id='wrapper' class='container'>
-		<div id='navbar' class='row'>
-			<h3 id='logo' class='col-md-2 cursive'>Nectar</h3>
-			<ul id='navbar-menu' class='col-md-8'>
-				<li><a href='#'>What's Growing</a></li>
-				<li><a href='#'>How It Works</a></li>
-				<li><a href='#'>Pricing</a></li>
-				<li><a href='#'>Contact</a></li>
-				<li><a href='#' class='btn btn-default btn-custom'>Get Started</a></li>
+	<div id='wrapper' class=''>
+		<div id='navbar' class='pure-menu pure-menu-horizontal pure-menu-scrollable pure-g'>
+			<h3 class='pure-u-1-4'><a href='#' id='logo' class='cursive'>Nectar</a></h3>
+			<ul class='pure-menu-list pure-u-1-2' >
+				<li class='pure-menu-item'><a href='#' class='pure-menu-link'>What's Growing</a></li>
+				<li class='pure-menu-item'><a href='#' class='pure-menu-link'>How It Works</a></li>
+				<li class='pure-menu-item'><a href='#' class='pure-menu-link'>Pricing</a></li>
+				<li class='pure-menu-item'><a href='#' class='pure-menu-link'>Contact</a></li>
+				<li class='pure-menu-item'><a href='#/register' class='pure-button btn-custom'>Get Started</a></li>
 			</ul>
-			<form class="col-md-2 form-inline">
+			<form class="pure-form pure-u-2-12" ng-submit="login()">
   				<div class="form-group">
-				    <label class="sr-only" for="email">Email address</label>
+				    <label for="email"></label>
 				    <input type="email" class="form-control input-sm" id="email" ng-model='email' placeholder="Email">
   				</div>
   				<div class="form-group">
-				    <label class="sr-only" for="exampleInputPassword3">Password</label>
+				    <label for="exampleInputPassword3"></label>
 				    <input type="password" ng-model='password' class="form-control input-sm" id="exampleInputPassword3" placeholder="Password">
   				</div>
-  				<button type="submit" class="btn btn-default btn-xs">Sign in</button>
+  				<button type="submit" class="pure-button pure-button primary">Sign in</button>
 			</form>
 		</div>
-		<div id='main' ng-view>
-			
+		<div ng-view=''>
 		</div>
 	</div>
 </body>

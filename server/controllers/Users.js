@@ -7,7 +7,7 @@ function Users(){
 		//check if email is in the system	
 		User.findOne({email: req.body.email}, function(err, user){
 			if(err){
-				res.send(err.validation.errors);
+				res.send(err.validation);
 				return;
 			} else if(!user){
 				res.send({email: {message: 'The email address you entered is not in our database.'}});
@@ -18,7 +18,7 @@ function Users(){
 					req.session.name = user.name;
 					res.send(user._id);
 				} else {
-					res.send({password: {message: 'The password you entered does not match our records.'}});
+					res.send({errors: {password: {message: 'The password you entered does not match our records.'}}});
 				};
 			}
 		});
@@ -29,19 +29,19 @@ function Users(){
 		//check if email is already in the system	
 		User.findOne({email: req.body.email}, function(err, user){
 			if(err){
-				res.send(err.validation.errors);
+				res.send(err.validation);
 				return;
 			}
 			//return error if found or if there was a user
 			if(user){
-				res.send({email: {message: 'The email you entered already exists in our system or there was a problem with your request.'}});
+				res.send({errors: {email: {message: 'The email you entered already exists in our system or there was a problem with your request.'}}});
 				return '';
 			} else {
 				//break function if headers have been sent.
 				var user = new User(req.body);
 				user.save(function(err){
 					if(err){
-						res.send(err.validation.errors);
+						res.send(err.validation);
 					} else {
 						req.session.name = user.name
 						req.session._id = user._id

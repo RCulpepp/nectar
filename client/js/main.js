@@ -1,0 +1,1 @@
+Stripe.setPublishableKey("sk_test_2vIopz9kw0LZslxKsKSvIg7f")

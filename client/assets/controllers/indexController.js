@@ -1,7 +1,13 @@
-myApp.controller('indexController', ['$scope', 'thingFactory','$routeParams', function($scope, thingFactory, $routeParams) {
+myApp.controller('indexController', ['$scope', 'userFactory','$routeParams', function($scope, userFactory, $routeParams) {
 
 	$scope.login = function(){
-	
+		user_cred = {
+			email: $scope.email,
+			password: $scope.password
+		}
+		userFactory.login(user_cred, function(data){
+
+		});
 	};
 	
 	$scope.add = function(){

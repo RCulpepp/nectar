@@ -6,17 +6,17 @@ myApp.config(function($routeProvider){
 		controller: 'indexController'
 	})
 	.when('/register', {
-		tempalteUrl: './partials/register.html',
+		templateUrl: './partials/form.html',
 		controller: 'usersController'
 	})
-	.when('/edit/:id', {
-		templateUrl: './partials/edit.html',
-		controller: 'editController',
-	})
-	.when('/show/:id', {
-		templateUrl: './partials/show.html',
-		controller: 'showController'
-	})
+	// .when('/edit/:id', {
+	// 	templateUrl: './partials/edit.html',
+	// 	controller: 'editController',
+	// })
+	// .when('/show/:id', {
+	// 	templateUrl: './partials/show.html',
+	// 	controller: 'showController'
+	// })
 	.otherwise({
 		redirectTo:'/'
 	})

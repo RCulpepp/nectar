@@ -21,7 +21,7 @@ function Subscriptions(){
 			email: req.body.email
 		}, function(err, customer){
 			if(err){
-				res.send({error: {message: err}});
+				res.send(err.validation.errors);
 			} else {
 				//create new subscription object
 				var subscription = {
@@ -40,7 +40,7 @@ function Subscriptions(){
 					delivery_date: req.body.delivery,
 					delivery_address: req.body.address,
 					products: req.body.products,
-					payment_received: true,
+					payment_received: true
 				};
 
 				//instantiate order mongoose model
@@ -49,6 +49,22 @@ function Subscriptions(){
 			}
 		});
 	};
+	//update subscription
+	this.update = function (req,res){
+		var sub_info = {
+			type: req.body.type,
+			day: req.body.day
+		};
+		//query Mongo
+		Subscription.update({_id: req.body.id}, sub_info, function(err, subscription){
+			if(err){
+				res.send(err.validatation.errors)
+			} else {
+
+			}
+		})
+	}
+
 }
 
 module.exports = new Subscriptions;

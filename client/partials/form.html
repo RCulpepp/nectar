@@ -1,26 +1,22 @@
-<form class='form-horizontal'>
-	<div class='form-group'>
-		<p ng-bind='error' class='error'></p>
+<form ng-submit="pay()" id='payment-form'>
+	<div class='form-group' ng-repeat="type in regisErrors">
+		<p ng-repeat="x in type" class='payment-errors'>{{ x.message }}</p>
 	</div>
 	<div class='form-group'>
-		<label for='fname'>First name:</label>
-		<input class='form-control' name='fname' type='text' ng-model='fname'>
+		<label>Number:</label>
+		<input class='form-control' data-stripe='number' type='text' ng-model='number'>
 	</div>
 	<div class='form-group'>
-		<label for='lname'>Last name:</label>
-		<input class='form-control' name='lname' type='text' ng-model='lname'>
+		<label for='lname'>CVC:</label>
+		<input class='form-control' data-stripe='cvc' type='text' ng-model='cvc'>
 	</div>
 	<div class='form-group'>
-		<label for='email'>Email:</label>
-		<input class='form-control' name='email' type='email' ng-model='email'>
+		<label for='email'>Exp. Month</label>
+		<input class='form-control' data-stripe='exp-month' type='text' ng-model='expMonth'>
 	</div>
 	<div class='form-group'>
-		<label for='password'>Password:</label>
-		<input class='form-control' name='password' type='password' ng-model='password'>
+		<label for='password'>Exp. Year</label>
+		<input class='form-control' data-stripe='exp-year' type='text' ng-model='expYear'>
 	</div>
-	<div class='form-group'>
-		<label for='confirm-pass'>Confirm Password:</label>
-		<input class='form-control' name='confirm-pass' type='password' ng-model='confrim-pass'>
-	</div>
-
+	<button type="submit">Submit</button>
 </form>
