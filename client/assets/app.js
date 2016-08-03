@@ -6,8 +6,12 @@ myApp.config(function($routeProvider){
 		controller: 'indexController'
 	})
 	.when('/register', {
-		templateUrl: './partials/form.html',
+		templateUrl: './partials/register.html',
 		controller: 'usersController'
+	})
+	.when('/dashboard', {
+		templateUrl: './partials/dashboard.html',
+		controller: 'dashboardsController'
 	})
 	// .when('/edit/:id', {
 	// 	templateUrl: './partials/edit.html',

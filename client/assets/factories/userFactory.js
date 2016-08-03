@@ -1,11 +1,11 @@
 myApp.factory('userFactory', ['$http', '$routeParams', function($http, $routeParams){
 	this.user = {};
-	this.regisErrors = [];
+	// this.regisErrors = [];
 	this.loginErrors = [];
 	
-	this.login = (user_data, callback) => {
-		this.findUser(user_data.email, function(){
-
+	this.login = function(input, callback){
+		$http.post('/users/login', input).success(function(json){
+			callback(json);
 		});
 	}
 	this.findUser = function(email, callback){
@@ -26,14 +26,20 @@ myApp.factory('userFactory', ['$http', '$routeParams', function($http, $routePar
     };
 
 	this.create = function(user, callback){
-		$http.post('/users', user, function(data){
-			if(typeof(data.errors) == 'object'){
-				this.regisErrors.push(data.errors)
-			}
+		// $http.post('/users', user, function(data){
+		// 	if(typeof(data.errors) == 'object'){
+		// 		this.regisErrors.push(data.errors)
+		// 	}
 
-			if(typeof(data.user) == 'object'){
+		// 	if(typeof(data.user) == 'object'){
 
+		// 	}
+		// })
+		$http.post('/users', user).success(function(json){
+			if(!json.errors){
+				factory.user = json;
 			}
+			callback(json);
 		})
 	};
 

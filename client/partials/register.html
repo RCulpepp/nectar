@@ -1,24 +1,4 @@
-<!DOCTYPE html>
-<html ng-app='myApp'>
-<head>
-	<title>Nectar</title>
-	<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="css/font-awesome.css">
-	<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"> -->
-	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
-	<link rel="stylesheet" type="text/css" href="css/styles.css">
-	<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-	<script src="js/main.js"></script>
-	<script type="text/javascript" src="angular/angular.js"></script>
-	<script src="angular-route/angular-route.js"></script>
-	<script src='assets/app.js'></script>
-	<script src='assets/factories/userFactory.js'></script>
-	<script src='assets/controllers/usersController.js'></script>
-	<script src='assets/controllers/indexController.js'></script>
-	<script src="assets/controllers/dashboardsController.js"></script>
-</head>
-<body>
-	<!-- <div id='wrapper' class=''>
+<div id='wrapper' class=''>
 		<div id='navbar' class='pure-menu pure-menu-horizontal pure-menu-scrollable pure-g'>
 			<h3 class='pure-u-1-4'><a href='#' id='logo' class='cursive'>Nectar</a></h3>
 			<ul class='pure-menu-list pure-u-1-2' >
@@ -39,10 +19,31 @@
   				</div>
   				<button type="submit" class="pure-button pure-button primary">Sign in</button>
 			</form>
-		</div> -->
-		<div ng-view=''>
-		
 		</div>
-	</div>
-</body>
-</html>
+<div>
+	<form>
+	<p>
+		<label>First Name</label>
+		<input type="text" ng-model="newUser.first_name">
+	</p>
+	<p>{{regisErrors.first_name.message}}</p>
+	<p>
+		<label>Last Name</label>
+		<input type="text" ng-model="newUser.last_name">
+	</p>
+	<p>{{regisErrors.last_name.message}}</p>
+	<p>
+		<label>Email</label>
+		<input type="email" ng-model="newUser.email">
+	</p>
+	<p>{{regisErrors.email.message}}</p>
+	<p>
+		<label>Password</label>
+		<input type="password" ng-model="newUser.password">
+	</p>
+	<p>{{regisErrors.password.message}}</p>
+	<p>
+		<input type="submit" value="Register" ng-click="create(newUser)">
+	</p>
+	</form>
+</div>
